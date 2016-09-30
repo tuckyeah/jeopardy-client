@@ -59,11 +59,28 @@ const pickCategory = function(cat_id) {
   });
 };
 
+const askQuestion = function(clue_id) {
+  return $.ajax({
+    url: app.host + '/clues/' + clue_id,
+    method: 'GET'
+  });
+};
+
+const submitAnswer = function(data) {
+  return $.ajax({
+    url: app.host + '/clues/answer',
+    method: 'PATCH',
+    data: data
+  });
+};
+
 module.exports = {
   newGame,
   signUp,
   signIn,
   changePassword,
   signOut,
-  pickCategory
+  pickCategory,
+  askQuestion,
+  submitAnswer
 };

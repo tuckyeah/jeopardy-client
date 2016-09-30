@@ -3,7 +3,8 @@
 const app = require('../app.js');
 
 const showGameTemplate = require('../templates/display-categories.handlebars');
-const displayQuestionsTemplate = require('../templates/display-questions.handlebars');
+const showClueValues = require('../templates/display-question-values.handlebars');
+const showQuestionTemplate = require('../templates/show-question.handlebars');
 
 const success = (data) => {
   console.log(data);
@@ -21,9 +22,16 @@ const newGameSuccess = (data) => {
   $('.content').attr('id', app.game.game.id); // add game id to content
 };
 
-const displayClues = (data) => {
-  $('.category-box').html(displayQuestionsTemplate(data));
+const displayValues = (data) => {
+  app.game.category = data;
+  $('.category-box').html(showClueValues(data));
 };
+
+const displayQuestion = (data) => {
+  app.game.current_clue = data;
+  $('.category-box').html(showQuestionTemplate(data));
+};
+
 const failure = (error) => {
   console.error(error);
 };
@@ -33,5 +41,5 @@ module.exports = {
   failure,
   success,
   signInSuccess,
-  displayClues
+  displayValues, displayQuestion
 };

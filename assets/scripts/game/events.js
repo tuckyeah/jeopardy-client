@@ -51,7 +51,33 @@ const onCategoryClick = (event) => {
   event.preventDefault();
   let cat_id = event.target.id;
   api.pickCategory(cat_id)
-    .done(ui.displayClues)
+    .done(ui.displayValues)
+    .fail(ui.failure);
+};
+
+// const onClueClick = (event) => {
+//   event.preventDefault();
+//   let clue_id = event.target.id;
+//   console.log(clue_id);
+//   console.log(event.target);
+//   api.askQuestion(clue_id)
+//     .done(ui.success)
+//     .fail(ui.failure);
+// };
+
+const onValueClick = (event) => {
+  event.preventDefault();
+  let clue_id = $(event.target).parent().attr('id');
+  api.askQuestion(clue_id)
+    .done(ui.displayQuestion)
+    .fail(ui.failure);
+};
+
+const onAnswerSubmit = (event) => {
+  event.preventDefault();
+  let data = getFormFields(data);
+  api.submitAnswer(data)
+    .done(ui.success)
     .fail(ui.failure);
 };
 
@@ -62,6 +88,8 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
   $('.category-box').on('click','.category-title', onCategoryClick);
+  $('.category-box').on('click', '.clue .value', onValueClick);
+  $('.category-box').on('submit', '#question-resonse', onAnswerSubmit);
 };
 
 module.exports = {

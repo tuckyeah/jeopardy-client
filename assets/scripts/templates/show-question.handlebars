@@ -1,0 +1,11 @@
+<h2>{{clue.category.name}}</h2>
+
+<h3>For ${{clue.value}}: {{clue.question}} </h3>
+
+<form id="question-response">
+  <fieldset>
+    <legend>Answer</legend>
+    <input type="text" name="clue[response]" placeholder="Who/What is..." id="{{clue.id}}">
+    <input type="submit" name="submit" value="Answer!">
+  </fieldset>
+</form>
