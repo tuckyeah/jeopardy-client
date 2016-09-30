@@ -1,0 +1,12 @@
+<div class="category">
+  <h3 class="category-title" id="{{this.id}}">{{category.name}}</h3>
+  {{#each category.clues}}
+    <ul>
+      <li class="clue" id="{{this.id}}">
+        {{question}}
+        <li><em>{{answer}}</em></li>
+      </li>
+    </ul>
+  {{/each}}
+  </div>
+</div>
