@@ -68,7 +68,7 @@ const askQuestion = function(clue_id) {
 
 const submitAnswer = function(data) {
   return $.ajax({
-    url: app.host + '/clues/answer',
+    url: app.host + '/answer/'+ app.game.clue_id +'/'+ app.game.game.id,
     method: 'PATCH',
     data: data
   });

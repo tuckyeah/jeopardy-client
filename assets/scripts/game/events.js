@@ -51,19 +51,9 @@ const onCategoryClick = (event) => {
   event.preventDefault();
   let cat_id = event.target.id;
   api.pickCategory(cat_id)
-    .done(ui.displayValues)
+    .done(ui.valuesSuccess)
     .fail(ui.failure);
 };
-
-// const onClueClick = (event) => {
-//   event.preventDefault();
-//   let clue_id = event.target.id;
-//   console.log(clue_id);
-//   console.log(event.target);
-//   api.askQuestion(clue_id)
-//     .done(ui.success)
-//     .fail(ui.failure);
-// };
 
 const onValueClick = (event) => {
   event.preventDefault();
@@ -75,10 +65,21 @@ const onValueClick = (event) => {
 
 const onAnswerSubmit = (event) => {
   event.preventDefault();
-  let data = getFormFields(data);
+  let data = getFormFields(event.target);
+  console.log(data);
   api.submitAnswer(data)
-    .done(ui.success)
-    .fail(ui.failure);
+    .done(ui.answerSuccess)
+    .fail(ui.answerFailure);
+};
+
+const onBackCategories = (event) => {
+  event.preventDefault();
+  ui.displayCategories();
+};
+
+const onBackValues = (event) => {
+  event.preventDefault();
+  ui.displayValues();
 };
 
 const addHandlers = () => {
@@ -89,7 +90,9 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut);
   $('.category-box').on('click','.category-title', onCategoryClick);
   $('.category-box').on('click', '.clue .value', onValueClick);
-  $('.category-box').on('submit', '#question-resonse', onAnswerSubmit);
+  $('.category-box').on('submit', '#question-response', onAnswerSubmit);
+  $('.category-box').on('click', '#backToCategories', onBackCategories);
+    $('.category-box').on('click', '#backToValues', onBackValues);
 };
 
 module.exports = {
