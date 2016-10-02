@@ -1,6 +1,5 @@
-<div class="category">
-  <h3 class="category-title" id="{{this.id}}">{{name}}</h3>
   {{#each clues}}
+    {{#unless answered}}
     <ul>
       <li class="clue" id="{{this.id}}">
         <p class="value">{{value}}</p>
@@ -9,7 +8,6 @@
         </p>
       </li>
     </ul>
+    {{/unless}}
   {{/each}}
   </div>
-</div>
-<button class="btn btn-default" id="backToCategories">Back</button>

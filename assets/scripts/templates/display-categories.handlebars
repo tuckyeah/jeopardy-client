@@ -1,6 +1,11 @@
+<h2 style="color: red">
+  Current Score: ${{game.user.score}}
+</h2>
+
 {{#each game.categories}}
   <div class="category">
     <h3 class="category-title" id="{{this.id}}">{{name}}</h3>
+    {{> display-question-values}}
     </div>
   </div>
 {{/each}}

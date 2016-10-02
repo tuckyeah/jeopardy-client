@@ -6,6 +6,7 @@ const showGameTemplate = require('../templates/display-categories.handlebars');
 const showClueValues = require('../templates/display-question-values.handlebars');
 const showQuestionTemplate = require('../templates/show-question.handlebars');
 const showResponseTemplate = require('../templates/display-response.handlebars');
+const showGameOverTemplate = require('../templates/game-over.handlebars');
 
 const success = (data) => {
   console.log(data);
@@ -19,14 +20,7 @@ const signInSuccess = (data) => {
 const answerSuccess = (data) => {
   console.log(data);
   app.response = data;
-  $('.response-box').append(showResponseTemplate(data));
-  // if (app.response.correct) {
-  //   console.log("right answer");
-  //
-  // } else {
-  //   console.log("Wrong answer.");
-  // }
-  // debugger;
+  $('.response-box').html(showResponseTemplate(data));
 };
 
 const answerFailure = (data) => {
@@ -35,6 +29,7 @@ const answerFailure = (data) => {
 };
 
 const displayCategories = () => {
+  $('.response-box').html('');
   $('.category-box').html(showGameTemplate(app.game));
 };
 
@@ -55,9 +50,27 @@ const valuesSuccess = (data) => {
 };
 
 const displayQuestion = (data) => {
+  app.game.category = data.clue.category;
   app.game.current_clue = data;
   app.game.clue_id = app.game.current_clue.clue.id;
   $('.category-box').html(showQuestionTemplate(data));
+};
+
+const updateBoardSuccess = (data) => {
+  app.game = data;
+  app.user.score = app.game.game.user.score;
+  if (app.game.game.over) {
+    $('.response-box').html('');
+    $('.category-box').html(showGameOverTemplate());
+  } else {
+    displayCategories();
+  }
+};
+
+const updateScoreSuccess = (data) => {
+  app.user.score = data.user.score;
+  app.game.user = data.user;
+  $('.category-box').html('');
 };
 
 const failure = (error) => {
@@ -71,5 +84,6 @@ module.exports = {
   signInSuccess,
   displayValues, displayQuestion,
   answerSuccess, answerFailure,
-  displayCategories, displayValues, valuesSuccess
+  displayCategories, valuesSuccess,
+  updateBoardSuccess, updateScoreSuccess
 };
