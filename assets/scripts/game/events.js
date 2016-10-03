@@ -9,16 +9,11 @@ const makeNewGameModal = () => {
   $('#makeGameModal').modal('show');
 };
 
-const onTestGame = (event) => {
-  event.preventDefault();
-  let data = (getFormFields(event.target));
-  debugger;
-};
-
 const onNewGame = (event) => {
   event.preventDefault();
   let data = getFormFields(event.target);
   // debugger;
+  $('#makeGameModal').modal('hide');
   api.newGame(data)
     .done(ui.newGameSuccess)
     .fail(ui.failure);

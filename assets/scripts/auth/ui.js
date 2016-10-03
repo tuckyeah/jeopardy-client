@@ -20,7 +20,6 @@ const gameBoardView = function () {
 
 };
 
-
 const signInSuccess = (data) => {
   app.user = data.user;
   $('#signInModal').modal('hide');

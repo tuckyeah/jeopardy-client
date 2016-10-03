@@ -15,11 +15,24 @@
 
 // GAME BOARD
 
-.category {
+.game-board {
+  border: 1px solid black;
+  max-width: 80vw;
   margin: auto;
-  display: inline-block;
+}
+
+.category-box {
+  margin: auto;
+  display: flex;
+}
+
+.category {
+  margin: 0 auto;
   box-sizing: border-box;
   position: relative;
+  max-width: 100%;
+  min-width: 20%;
+  flex-grow: 1;
 
   .category-title {
     border: 3px dotted #000;
@@ -41,7 +54,7 @@
     }
   }
 }
-
+//
 .clearfix {
   overflow: auto;
 }
@@ -121,6 +134,8 @@
 
 .score {
   font-family: $roboto;
+  display: block;
+  flex-grow: 1;
 }
 
 .intro-text {

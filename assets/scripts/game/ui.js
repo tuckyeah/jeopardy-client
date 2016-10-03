@@ -7,6 +7,7 @@ const showClueValues = require('../templates/display-question-values.handlebars'
 const showQuestionTemplate = require('../templates/show-question.handlebars');
 const showResponseTemplate = require('../templates/display-response.handlebars');
 const showGameOverTemplate = require('../templates/game-over.handlebars');
+const showScoreTemplate = require('../templates/display-score-categories.handlebars');
 
 const success = (data) => {
   console.log(data);
@@ -37,8 +38,8 @@ const displayCategories = () => {
 const newGameSuccess = (data) => {
   app.game = data;
   console.log(app.game);
-  $(' .score-header').hide();
   displayCategories();
+  $('.score-header').html(showScoreTemplate(app.game.game.user));
   $('.content').attr('id', app.game.game.id); // add game id to content
 };
 
@@ -66,6 +67,7 @@ const updateBoardSuccess = (data) => {
     $('.category-box').html(showGameOverTemplate());
   } else {
     displayCategories();
+    $('.score-header').html(showScoreTemplate(app.user));
   }
 };
 

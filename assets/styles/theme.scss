@@ -14,9 +14,15 @@ h3 {
 .category {
   background-color: $royal-blue;
   border: 5px solid $dark-blue;
+  cursor: pointer;
 
   ul {
     color: $white;
+      li {
+      &:hover {
+        background-color:darken($royal-blue, 5%);
+      }
+    }
   }
 }
 
