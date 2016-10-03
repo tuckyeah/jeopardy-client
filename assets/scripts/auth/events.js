@@ -9,7 +9,7 @@ const onSignUp = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.signUp(data)
-    .done(ui.success)
+    .done(ui.signUpSuccess)
     .fail(ui.failure);
 };
 

@@ -1,12 +1,18 @@
-<h2>{{clue.category.name}}</h2>
+<div class="question-ask-box">
 
-<h3>For ${{clue.value}}: {{clue.question}} </h3>
+  <h2 class="category-title">{{clue.category.name}}</h2>
 
-<form id="question-response">
+  <h3 class="question">For ${{clue.value}}: <br/>
+     {{clue.question}} </h3>
+</div>
+
+<form id="question-response" class="question-response-box">
   <fieldset>
     <legend>Who/What is...</legend>
-    <input type="text" name="clue[response]" placeholder="Who/What is..." id="{{clue.id}}">
-    <input type="submit" name="submit" value="Answer!">
+    <input type="text" class="form-control" name="clue[response]" placeholder="Who/What is..." id="{{clue.id}}">
+    <input type="submit" name="submit" class="btn btn-success" value="Answer!">
+    <button class="btn btn-danger" id="backToCategories">Back</button>
   </fieldset>
 </form>
-<button class="btn btn-default" id="backToCategories">Back</button>
+
+</div>

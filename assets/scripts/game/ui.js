@@ -20,7 +20,8 @@ const signInSuccess = (data) => {
 const answerSuccess = (data) => {
   console.log(data);
   app.response = data;
-  $('.response-box').html(showResponseTemplate(data));
+  $('.question-response-box').hide();
+  $('.question').html(showResponseTemplate(data));
 };
 
 const answerFailure = (data) => {
@@ -36,6 +37,7 @@ const displayCategories = () => {
 const newGameSuccess = (data) => {
   app.game = data;
   console.log(app.game);
+  $(' .score-header').hide();
   displayCategories();
   $('.content').attr('id', app.game.game.id); // add game id to content
 };

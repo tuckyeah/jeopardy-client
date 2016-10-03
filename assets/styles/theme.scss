@@ -1,0 +1,26 @@
+body {
+  background-color: $ocean;
+}
+
+h2,
+h3 {
+  color: $goldenrod;
+}
+
+.title {
+  color: $white;
+}
+
+.category {
+  background-color: $royal-blue;
+  border: 5px solid $dark-blue;
+
+  ul {
+    color: $white;
+  }
+}
+
+.score {
+  color: $white;
+  text-align: center;
+}

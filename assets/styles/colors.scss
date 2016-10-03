@@ -1,0 +1,40 @@
+// jeopardy theme 1 from Adobe CC
+$magenta: #f10374;
+$purple: #5105bd;
+$royal-blue: #002290;
+$light-blue: #0774d9;
+$goldenrod: #f09d35;
+
+$question-blue: #091874;
+
+// jeopardy theme 2 from Adobe CC
+$dark-blue: #120f59;
+$ocean: #324bd9;
+$powder-blue: #6393f2;
+$turquoise: #57f2f2;
+$orange: #bf6b04;
+
+$cream: #ffffcc;
+
+$white: #fff;
+$black: #000;
+
+// gives a transparent white
+@function white($opacity) {
+  @return rgba(255, 255, 255, $opacity)
+};
+
+
+// gives a transparent black
+@function black($opacity) {
+  @return rgba(0, 0, 0, $opacity)
+};
+
+
+@function shade($color, $percentage) {
+  @return mix($black, $color, $percentage)
+};
+
+@function tint($color, $percentage) {
+  @return mix($white, $color, $percentage)
+};

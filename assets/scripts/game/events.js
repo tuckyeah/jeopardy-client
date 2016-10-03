@@ -5,9 +5,21 @@ let getFormFields = require('../../../lib/get-form-fields.js');
 const api = require('./api.js');
 const ui = require('./ui.js');
 
+const makeNewGameModal = () => {
+  $('#makeGameModal').modal('show');
+};
+
+const onTestGame = (event) => {
+  event.preventDefault();
+  let data = (getFormFields(event.target));
+  debugger;
+};
+
 const onNewGame = (event) => {
   event.preventDefault();
-  api.newGame()
+  let data = getFormFields(event.target);
+  // debugger;
+  api.newGame(data)
     .done(ui.newGameSuccess)
     .fail(ui.failure);
 };
@@ -31,7 +43,6 @@ const onValueClick = (event) => {
 const onAnswerSubmit = (event) => {
   event.preventDefault();
   let data = getFormFields(event.target);
-  console.log(data);
   api.submitAnswer(data)
     .done(ui.answerSuccess)
     .fail(ui.answerFailure);
@@ -69,15 +80,17 @@ const onResetScore = (event) => {
 };
 
 const addHandlers = () => {
-  $('#makeNewGame').on('click', onNewGame);
+  $('#makeGameModal').on('submit', onNewGame);
+  // $('#makeNewGame').on('submit', onNewGame);
   // $('.category-box').on('click','.category-title', onCategoryClick);
   $('.category-box').on('click', '.clue .value', onValueClick);
   $('.category-box').on('submit', '#question-response', onAnswerSubmit);
   $('.category-box').on('click', '#backToCategories', onBackCategories);
   $('.category-box').on('click', '#backToValues', onBackValues);
-  $('.response-box').on('click', '#nextQuestion', onNextQuestion);
+  $('.category-box').on('click', '#nextQuestion', onNextQuestion);
   $('#showAllGames').on('click', onAllGames);
   $('#resetScore').on('click', onResetScore);
+  $('#show-new-game-modal').on('click', makeNewGameModal);
 };
 
 module.exports = {

@@ -1,0 +1,134 @@
+// NAVIGATION
+
+.navbar-default {
+  border-radius: 5px;
+  margin: auto;
+  width: 80%;
+}
+
+// HEADER
+
+.title {
+  margin: 25px;
+  text-align: center;
+}
+
+// GAME BOARD
+
+.category {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+
+  .category-title {
+    border: 3px dotted #000;
+    box-sizing: border-box;
+    margin-top: 0px;
+    padding: 10px;
+  }
+
+  ul {
+    padding: 0px;
+
+    li {
+      border: 5px solid $dark-blue;
+      box-sizing: border-box;
+      margin: 0px;
+      text-align: center;
+      padding: 10px;
+      height: 80px;
+    }
+  }
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+
+.question-ask-box {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: $question-blue;
+  width: 50%;
+  margin: 25px auto;
+  padding: 10px;
+
+  .category-title {
+    font-size: 2em;
+    border-bottom: 8px solid $white;
+  }
+}
+
+.question-response-box {
+  width: 50%;
+  border: 1px solid black;
+  margin: 25px auto;
+  background-color: $cream;
+  padding: 20px;
+  border-radius: 5px;
+
+  legend {
+    text-align: center;
+    font-family: 'Impact', sans-serif;
+  }
+
+  .btn {
+    margin: 10px 5px;
+    display: inline-block;
+    font-size: 1.2em;
+    float: right;
+  }
+}
+
+.question {
+  color: $white;
+  text-align: center;
+}
+
+.intro-text-box {
+  border: 3px solid black;
+  width: 30vmin;
+  margin: auto;
+
+  .btn {
+    display: block;
+    margin: auto;
+    text-align: auto;
+    display: block;
+  }
+
+  .btn-sign-up {
+    background-color: $goldenrod;
+    color: $royal-blue;
+
+    &:hover {
+      background-color: $dark-blue;
+      color: $goldenrod;
+    }
+  }
+
+  .btn-sign-in {
+    background-color: $light-blue;
+
+    &:hover {
+      background-color: $dark-blue;
+      color: $goldenrod;
+    }
+  }
+}
+
+.score {
+  font-family: $roboto;
+}
+
+.intro-text {
+  margin-top: 5%;
+  max-height: 660px;
+  padding: 10%;
+}
+
+.alert {
+  display: none;
+}

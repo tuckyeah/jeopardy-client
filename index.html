@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
-
+      <title>Jeopardy!</title>
+      <meta name = "viewport" content = "width=device-width, initial-scale=1">
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+      <header>
+        <h1 class="title">Jeopardy!</h1>
+      </header>
+
+      <nav class="navbar-default">
+          <ul class="nav nav-pills nav-justified">
+            <li role="presentation" id="show-new-game-modal"><a href="#">Make New Game</a></li>
+            <li role="presentation" id="showAllGames"><a href="#">All Games</a></li>
+            <li role="presentation" id="resetScore"><a href="#">Reset Score</a></li>
+            <li role="presentation"><a href="#">Change Password</a></li>
+            <li role="presentation"><a href="#">Sign out</a></li>
+          </ul>
+      </nav>
+
+      <!-- <div class="forms">
       <form id="sign-up">
         <fieldset>
           <legend>Sign up!</legend>
+          <input type="text" name="credentials[name]" placeholder="Enter name">
           <input type="email" name="credentials[email]" placeholder="Enter email">
           <input type="password" name="credentials[password]" placeholder="Enter password">
           <input type="password" name="credentials[password_confirmation]" placeholder="Enter password">
@@ -27,8 +43,10 @@
           <input type="submit" name="submit" value="Sign in!">
         </fieldset>
       </form>
-
       <br />
+      </div> -->
+
+
 
       <!-- <form id="change-password">
         <fieldset>
@@ -47,13 +65,140 @@
           <input type="submit" name="submit" value="Sign out!">
         </fieldset>
       </form> -->
-      <button class="btn btn-default" id="makeNewGame"> Make New Game!</button>
-      <button class="btn btn-default" id="showAllGames"> All Games!</button>
-      <button class="btn btn-default" id="resetScore">  Reset Score!</button>
+      <!-- <button class="btn btn-default" id="makeNewGame"> Make New Game!</button> -->
+      <!-- <button class="btn btn-default" id="showAllGames"> All Games!</button>
+      <button class="btn btn-default" id="resetScore">  Reset Score!</button> -->
 
       <div class="content">
-        <div class="category-box"></div>
-        <div class="response-box"></div>
+        <div class="score-header">
+
+        </div>
+        <div class="intro-text-box">
+            <button type="button" id="sign-up-button" class="btn btn-sign-up btn-lg">Sign up</button>
+          <h2>
+            <button type="button" id="sign-in-button" class="btn btn-sign-in btn-lg">Sign in</button>
+          </h2>
+        </div>
+        <div class="game-board">
+          <div class="category-box"></div>
+          <div class="response-box"></div>
+        </div>
+      </div>
+      <!-- MODAL SECTION  -->
+          <!-- Sign In Modal -->
+          <div class="modal fade" id="signInModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Sign in!</h4>
+                </div>
+                <div class="modal-body">
+                  <div id="sign-in-fail" class="alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    Incorrect username/password likely. Try again.
+                  </div>
+                  <form class="form-horizontal" id="sign-in">
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" name = "credentials[email]"
+                        placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" name="credentials[password]" id="inputPassword3" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <input type="submit" class="btn btn-primary right-float" id="sign-in-submit">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sign Up Modal -->
+          <div class="modal fade" id="signUpModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Sign Up!</h4>
+                </div>
+                <div class="modal-body">
+                  <div id="sign-up-fail" class="alert alert-danger" role="alert">
+                  <span class="sr-only">Error:</span>
+                   Something went wrong! Please try again with a different email address.
+                </div>
+                  <form class="form-horizontal" id="sign-up">
+                    <div class="form-group">
+                      <label for="inputName" class="col-sm-2 control-label">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputName" name = "credentials[name]"
+                        placeholder="Name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" name = "credentials[email]"
+                        placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" name="credentials[password]" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Confirm Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="Password Confirmation">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <input type="submit" class="btn btn-success right-float" id="sign-up-submit" value="Sign up!">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="modal fade" id="makeGameModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Start A New Game!</h4>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" id="make-game">
+                <div class="form-group">
+                  <label for="inputCats" class="col-sm-2 control-label">Number Categories</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="game[num_categories]"
+                    placeholder="Number of Categories">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <input type="submit" class="btn btn-primary right-float" id="makeNewGame">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </body>
 </html>

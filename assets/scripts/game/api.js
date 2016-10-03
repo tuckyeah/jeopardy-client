@@ -4,7 +4,7 @@ const app = require('../app.js');
 
 
 
-const newGame = function() {
+const newGame = function(data) {
   return $.ajax({
     url: app.host + "/games",
     method: 'POST',
@@ -13,7 +13,8 @@ const newGame = function() {
     },
     data: {
       'game': {
-        'user_id': app.user.id
+        'user_id': app.user.id,
+        'num_categories': data.game.num_categories
       }
     }
   });

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Henny+Penny|Monofett|Ranchers|Vast+Shadow');
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Oswald:700|Roboto+Condensed:700');
+@import url('https://fonts.googleapis.com/css?family=Vollkorn');
+
+$hennypenny: 'Henny Penny', sans-serif;
+$monofett: 'Monofett', sans-serif;
+$ranchers: 'Ranchers', sans-serif;
+$vastshadow: 'Vast Shadow', sans-serif;
+$fjalla: 'Fjalla One', sans-serif;
+$oswald: 'Oswald', sans-serif;
+$roboto: 'Roboto Condensed', sans-serif;
+$impact: 'Impact', sans-serif;
+$vollkorn: 'Vollkorn', serif;
+
+@mixin text-shadow($opacity) {
+  text-shadow: black($opacity) 0 1px 0;
+}
+
+@mixin bold-text-shadow($opacity) {
+  text-shadow: black($opacity) 2px 3px 0;
+}
+
+.title {
+  @include bold-text-shadow(100%);
+  font-family: $ranchers;
+  font-size: 6em;
+  letter-spacing: .3em;
+  text-align: center;
+}
+
+.category-title {
+  font-family: $oswald;
+  text-align: center;
+  letter-spacing: 0.1em;
+  line-height: 1.5em;
+  font-size: 1.8em;
+}
+
+.category li {
+  font-family: $roboto;
+  list-style-type: none;
+  font-size: 2em;
+}
+
+.btn {
+  font-family: $fjalla;
+}
+
+.question {
+  font-family: $vollkorn;
+}
