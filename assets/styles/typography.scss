@@ -49,3 +49,29 @@ $vollkorn: 'Vollkorn', serif;
 .question {
   font-family: $vollkorn;
 }
+
+.game-over {
+  border: 10px dotted $goldenrod;
+  margin: 10% auto;
+  padding: 5%;
+
+  h1 {
+    font-family: $monofett;
+    color: $white;
+    font-size: 5em;
+    text-align: center;
+  }
+  .play-again-btn {
+    margin: 50px auto;
+    display: block;
+    background-color: $purple;
+    color: $white;
+    // height: 40px;
+    // width: 150px;
+    font-size: 2em;
+
+    &:hover {
+      background-color: $magenta;
+    }
+  }
+}

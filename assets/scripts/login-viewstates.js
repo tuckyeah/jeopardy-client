@@ -21,6 +21,7 @@ const changePassView = () => {
 
 const logInView = function () {
   $('nav').css('visibility', 'hidden');
+  $('img').css('visibility', 'visible');
   // $('#change-password-button').hide();
   // $('#sign-out').hide();
 };

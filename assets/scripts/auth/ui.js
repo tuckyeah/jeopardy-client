@@ -17,11 +17,13 @@ const gameBoardView = function () {
   $('#sign-in-button').hide();
   $('#sign-up-button').hide();
   $('.intro-text-box').hide();
+  $('img').fadeOut('slow');
 };
 
 const logOutView = function() {
   $('nav').css('visibility', 'hidden');
-  $('.score-header').html('')
+  $('.score-header').html('');
+  $('.category-box').hide();
   $('.intro-text-box').show();
   $('#sign-in-button').show();
   $('#sign-up-button').show();

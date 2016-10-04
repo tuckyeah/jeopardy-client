@@ -75,6 +75,11 @@ const onResetScore = (event) => {
     .fail(ui.failure);
 };
 
+const onPlayAgain = (event) => {
+  event.preventDefault();
+  makeNewGameModal();
+}
+
 const addHandlers = () => {
   $('#makeGameModal').on('submit', onNewGame);
   // $('#makeNewGame').on('submit', onNewGame);
@@ -87,6 +92,7 @@ const addHandlers = () => {
   $('#showAllGames').on('click', onAllGames);
   $('#resetScore').on('click', onResetScore);
   $('#show-new-game-modal').on('click', makeNewGameModal);
+  $('.play-again-btn').on('click', onPlayAgain)
 };
 
 module.exports = {

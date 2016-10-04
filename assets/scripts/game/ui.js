@@ -64,8 +64,7 @@ const newGameSuccess = (data) => {
   console.log(app.game);
   app.game.categories = filter_categories(app.game.game.clues);
   build_categories(app.game.game.clues);
-  console.log(app.game.categories);
-  debugger;
+  // console.log(app.game.categories);
   displayCategories();
   $('.score-header').html(showScoreTemplate(app.game.game.user));
   $('.content').attr('id', app.game.game.id); // add game id to content
@@ -90,7 +89,12 @@ const displayQuestion = (data) => {
 const updateBoardSuccess = (data) => {
   app.game = data;
   app.user.score = app.game.game.user.score;
+  app.game.categories = filter_categories(app.game.game.clues);
+  build_categories(app.game.game.clues);
+
+  console.log(app.game);
   if (app.game.game.over) {
+    $('img').fadeIn('slow');
     $('.response-box').html('');
     $('.category-box').html(showGameOverTemplate());
   } else {
@@ -103,6 +107,7 @@ const updateScoreSuccess = (data) => {
   app.user.score = data.user.score;
   app.game.user = data.user;
   $('.category-box').html('');
+  $('.score-header').html(showScoreTemplate(app.user));
 };
 
 const failure = (error) => {
