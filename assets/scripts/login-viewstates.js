@@ -21,14 +21,14 @@ const changePassView = () => {
 
 const logInView = function () {
   $('nav').css('visibility', 'hidden');
-  $('#change-password-button').hide();
-  $('#sign-out').hide();
+  // $('#change-password-button').hide();
+  // $('#sign-out').hide();
 };
 
 const addHandlers = () => {
   $('#sign-in-button').on('click', signInView);
   $('#sign-up-button').on('click', signUpView);
-  $('#change-password-button').on('click', changePassView);
+  $('#change-pass-button').on('click', changePassView);
 };
 
 module.exports = {

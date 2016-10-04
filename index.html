@@ -16,58 +16,15 @@
             <li role="presentation" id="show-new-game-modal"><a href="#">Make New Game</a></li>
             <li role="presentation" id="showAllGames"><a href="#">All Games</a></li>
             <li role="presentation" id="resetScore"><a href="#">Reset Score</a></li>
-            <li role="presentation"><a href="#">Change Password</a></li>
-            <li role="presentation"><a href="#">Sign out</a></li>
+            <li role="presentation" id="change-pass-button"><a href="#">Change Password</a></li>
+            <li role="presentation" id="sign-out"><a href="#">Sign out</a></li>
           </ul>
       </nav>
 
-      <!-- <div class="forms">
-      <form id="sign-up">
-        <fieldset>
-          <legend>Sign up!</legend>
-          <input type="text" name="credentials[name]" placeholder="Enter name">
-          <input type="email" name="credentials[email]" placeholder="Enter email">
-          <input type="password" name="credentials[password]" placeholder="Enter password">
-          <input type="password" name="credentials[password_confirmation]" placeholder="Enter password">
-          <input type="submit" name="submit" value="Sign up!">
-        </fieldset>
-      </form>
+      <div id="error-message" class="alert alert-danger fade in display-error" role="alert">
+        <!-- placeholder to display any other weird errors we might get back from the server -->
+      </div>
 
-      <br />
-
-      <form id="sign-in">
-        <fieldset>
-          <legend>Sign in!</legend>
-          <input type="email" name="credentials[email]" placeholder="Enter email">
-          <input type="password" name="credentials[password]" placeholder="Enter password">
-          <input type="submit" name="submit" value="Sign in!">
-        </fieldset>
-      </form>
-      <br />
-      </div> -->
-
-
-
-      <!-- <form id="change-password">
-        <fieldset>
-          <legend>Change password!</legend>
-          <input type="password" name="passwords[old]" placeholder="Old password">
-          <input type="password" name="passwords[new]" placeholder="New password">
-          <input type="submit" name="submit" value="Change password!">
-        </fieldset>
-      </form>
-
-      <br />
-
-      <form id="sign-out">
-        <fieldset>
-          <legend>Sign out!</legend>
-          <input type="submit" name="submit" value="Sign out!">
-        </fieldset>
-      </form> -->
-      <!-- <button class="btn btn-default" id="makeNewGame"> Make New Game!</button> -->
-      <!-- <button class="btn btn-default" id="showAllGames"> All Games!</button>
-      <button class="btn btn-default" id="resetScore">  Reset Score!</button> -->
 
       <div class="content">
         <div class="score-header">
@@ -165,6 +122,43 @@
                     <div class="form-group">
                       <div class="col-sm-12">
                         <input type="submit" class="btn btn-success right-float" id="sign-up-submit" value="Sign up!">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Change Password Modal -->
+          <div class="modal fade" id="changePassModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Change Password!</h4>
+                </div>
+                <div class="modal-body">
+                  <div id="change-pass-fail" class="alert alert-danger" role="alert">
+                    <span class="sr-only">Error:</span>
+                    Whoops! That didn't work. Please try again.
+                  </div>
+                  <form class="form-horizontal" id="change-password">
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Current Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" name="passwords[old]" placeholder="Current Password">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">New Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" name="passwords[new]" placeholder="New Password">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <input type="submit" class="btn btn-primary right-float" id="change-pass-submit">
                       </div>
                     </div>
                   </form>

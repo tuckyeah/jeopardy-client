@@ -7,10 +7,16 @@ const ui = require('./ui.js');
 
 const onSignUp = function (event) {
   event.preventDefault();
-  let data = getFormFields(event.target);
-  api.signUp(data)
-    .done(ui.signUpSuccess)
-    .fail(ui.failure);
+
+  let signUpData = getFormFields(event.target);
+  api.signUp(signUpData)
+    .done(function(data, textStatus, jqXHR) {
+      // these variables are what the done function returns every time
+      api.autoLogIn(data, textStatus, jqXHR, signUpData)
+        .done(ui.signInSuccess)
+        .fail(ui.signInFailure);
+    })
+    .fail(ui.signUpFailure);
 };
 
 const onSignIn = function (event) {
@@ -18,7 +24,7 @@ const onSignIn = function (event) {
   let data = getFormFields(event.target);
   api.signIn(data)
     .done(ui.signInSuccess)
-    .fail(ui.failure);
+    .fail(ui.signInFailure);
 };
 
 const onChangePassword = function (event) {
@@ -26,14 +32,14 @@ const onChangePassword = function (event) {
   let data = getFormFields(event.target);
   api.changePassword(data)
     .done(ui.changePasswordSuccess)
-    .fail(ui.failure);
+    .fail(ui.changePasswordFailure);
 };
 
 const onSignOut = function (event) {
   event.preventDefault();
   api.signOut()
     .done(ui.signOutSuccess)
-    .fail(ui.failure);
+    .fail(ui.signOutFailure);
 };
 
 
@@ -41,7 +47,7 @@ const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
-  $('#sign-out').on('submit', onSignOut);
+  $('#sign-out').on('click', onSignOut);
 };
 
 module.exports = {
