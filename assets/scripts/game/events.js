@@ -30,6 +30,7 @@ const onNewGame = (event) => {
 const onValueClick = (event) => {
   event.preventDefault();
   let clue_id = $(event.target).parent().attr('id');
+  console.log(clue_id);
   api.askQuestion(clue_id)
     .done(ui.displayQuestion)
     .fail(ui.failure);

@@ -41,6 +41,7 @@ const filter_categories = (data) => {
 
   data.forEach(function(element){
     if (ids.indexOf(element.category.id) === -1) {
+      element.category.clues = [];
       categories.push(element.category);
       ids.push(element.category.id);
     }
@@ -48,11 +49,22 @@ const filter_categories = (data) => {
   return categories;
 };
 
+const build_categories = (data) => {
+  data.forEach(function(element) {
+    app.game.categories.forEach(function(category){
+      if (category.id === element.category.id) {
+        category.clues.push(element);
+      }
+    });
+  });
+};
 
 const newGameSuccess = (data) => {
   app.game = data;
   console.log(app.game);
   app.game.categories = filter_categories(app.game.game.clues);
+  build_categories(app.game.game.clues);
+  console.log(app.game.categories);
   debugger;
   displayCategories();
   $('.score-header').html(showScoreTemplate(app.game.game.user));
