@@ -35,9 +35,25 @@ const displayCategories = () => {
   $('.category-box').html(showGameTemplate(app.game));
 };
 
+const filter_categories = (data) => {
+  let categories = [];
+  let ids = [];
+
+  data.forEach(function(element){
+    if (ids.indexOf(element.category.id) === -1) {
+      categories.push(element.category);
+      ids.push(element.category.id);
+    }
+  });
+  return categories;
+};
+
+
 const newGameSuccess = (data) => {
   app.game = data;
   console.log(app.game);
+  app.game.categories = filter_categories(app.game.game.clues);
+  debugger;
   displayCategories();
   $('.score-header').html(showScoreTemplate(app.game.game.user));
   $('.content').attr('id', app.game.game.id); // add game id to content
