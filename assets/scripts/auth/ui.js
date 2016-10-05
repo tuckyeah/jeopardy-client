@@ -30,6 +30,7 @@ const logOutView = function() {
   $('.intro-text-box').show();
   $('#sign-in-button').show();
   $('#sign-up-button').show();
+  $('img').fadeIn('slow');
 };
 
 const signInSuccess = (data) => {
