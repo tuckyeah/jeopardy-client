@@ -14,6 +14,7 @@ const onNewGame = (event) => {
   let data = getFormFields(event.target);
   // debugger;
   $('#makeGameModal').modal('hide');
+  $('img').fadeOut('slow');
   api.newGame(data)
     .done(ui.newGameSuccess)
     .fail(ui.failure);
@@ -89,7 +90,7 @@ const addHandlers = () => {
   $('#showAllGames').on('click', onAllGames);
   $('#resetScore').on('click', onResetScore);
   $('#show-new-game-modal').on('click', makeNewGameModal);
-  $('.play-again-btn').on('click', onPlayAgain);
+  $('.category-box').on('click', '.play-again-btn', onPlayAgain);
   $('#show-all-games-modal').on('click', onAllGames);
   $('#close-all-games').on('click', onCloseAllGames);
 };
