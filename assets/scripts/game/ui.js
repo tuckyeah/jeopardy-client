@@ -8,6 +8,7 @@ const showQuestionTemplate = require('../templates/show-question.handlebars');
 const showResponseTemplate = require('../templates/display-response.handlebars');
 const showGameOverTemplate = require('../templates/game-over.handlebars');
 const showScoreTemplate = require('../templates/display-score-categories.handlebars');
+const showAllGamesTemplate = require('../templates/all-games-template.handlebars');
 
 const success = (data) => {
   console.log(data);
@@ -15,18 +16,18 @@ const success = (data) => {
 
 const signInSuccess = (data) => {
   app.user = data.user;
-  console.log(data);
+  // console.log(data);
 };
 
 const answerSuccess = (data) => {
-  console.log(data);
+  // console.log(data);
   app.response = data;
   $('.question-response-box').hide();
   $('.question').html(showResponseTemplate(data));
 };
 
 const answerFailure = (data) => {
-  console.log("Wrong answer");
+  // console.log("Wrong answer");
   console.error(data);
 };
 
@@ -61,7 +62,7 @@ const build_categories = (data) => {
 
 const newGameSuccess = (data) => {
   app.game = data;
-  console.log(app.game);
+  // console.log(app.game);
   app.game.categories = filter_categories(app.game.game.clues);
   build_categories(app.game.game.clues);
   // console.log(app.game.categories);
@@ -92,7 +93,7 @@ const updateBoardSuccess = (data) => {
   app.game.categories = filter_categories(app.game.game.clues);
   build_categories(app.game.game.clues);
 
-  console.log(app.game);
+  // console.log(app.game);
   if (app.game.game.over) {
     $('img').fadeIn('slow');
     $('.response-box').html('');
@@ -110,6 +111,13 @@ const updateScoreSuccess = (data) => {
   $('.score-header').html(showScoreTemplate(app.user));
 };
 
+const allGamesSuccess = (data) => {
+  app.user.all_games = data;
+  $('img').fadeIn('slow');
+  $('#allGamesModal').modal('show');
+  $('.all-games-body').html(showAllGamesTemplate(app.user.all_games));
+};
+
 const failure = (error) => {
   console.error(error);
 };
@@ -122,5 +130,6 @@ module.exports = {
   displayValues, displayQuestion,
   answerSuccess, answerFailure,
   displayCategories, valuesSuccess,
-  updateBoardSuccess, updateScoreSuccess
+  updateBoardSuccess, updateScoreSuccess,
+  allGamesSuccess
 };

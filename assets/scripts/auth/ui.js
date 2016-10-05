@@ -9,9 +9,12 @@ const success = (data) => {
 };
 
 const failure = (error) => {
+  let alertText = `Status Code ${error.status} : ${error.statusText}`;
+  $('#error-message')
+    .append(alertText)
+    .show();
   console.error(error);
 };
-
 const gameBoardView = function () {
   $('nav').css('visibility', 'visible');
   $('#sign-in-button').hide();

@@ -129,11 +129,11 @@
   }
 
   .btn-sign-in {
-    background-color: $light-blue;
+    background-color: $purple;
 
     &:hover {
-      background-color: $dark-blue;
-      color: $goldenrod;
+      background-color: $magenta;
+      color: $purple;
     }
   }
 }

@@ -19,18 +19,10 @@ const onNewGame = (event) => {
     .fail(ui.failure);
 };
 
-// const onCategoryClick = (event) => {
-//   event.preventDefault();
-//   let cat_id = event.target.id;
-//   api.pickCategory(cat_id)
-//     .done(ui.valuesSuccess)
-//     .fail(ui.failure);
-// };
-
 const onValueClick = (event) => {
   event.preventDefault();
   let clue_id = $(event.target).parent().attr('id');
-  console.log(clue_id);
+  // console.log(clue_id);
   api.askQuestion(clue_id)
     .done(ui.displayQuestion)
     .fail(ui.failure);
@@ -64,7 +56,7 @@ const onNextQuestion = (event) => {
 const onAllGames = (event) => {
   event.preventDefault();
   api.getAllGames()
-    .done(ui.success)
+    .done(ui.allGamesSuccess)
     .fail(ui.failure);
 };
 
@@ -78,7 +70,12 @@ const onResetScore = (event) => {
 const onPlayAgain = (event) => {
   event.preventDefault();
   makeNewGameModal();
-}
+};
+
+const onCloseAllGames = () => {
+  $('#allGamesModal').modal('hide');
+  $('img').fadeOut('slow');
+};
 
 const addHandlers = () => {
   $('#makeGameModal').on('submit', onNewGame);
@@ -92,7 +89,9 @@ const addHandlers = () => {
   $('#showAllGames').on('click', onAllGames);
   $('#resetScore').on('click', onResetScore);
   $('#show-new-game-modal').on('click', makeNewGameModal);
-  $('.play-again-btn').on('click', onPlayAgain)
+  $('.play-again-btn').on('click', onPlayAgain);
+  $('#show-all-games-modal').on('click', onAllGames);
+  $('#close-all-games').on('click', onCloseAllGames);
 };
 
 module.exports = {

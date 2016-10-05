@@ -14,7 +14,7 @@
       <nav class="navbar-default">
           <ul class="nav nav-pills nav-justified">
             <li role="presentation" id="show-new-game-modal"><a href="#">Make New Game</a></li>
-            <li role="presentation" id="showAllGames"><a href="#">All Games</a></li>
+            <li role="presentation" id="show-all-games-modal"><a href="#">All Games</a></li>
             <li role="presentation" id="resetScore"><a href="#">Reset Score</a></li>
             <li role="presentation" id="change-pass-button"><a href="#">Change Password</a></li>
             <li role="presentation" id="sign-out"><a href="#">Sign out</a></li>
@@ -166,7 +166,7 @@
               </div>
             </div>
           </div>
-
+<!-- New Game Modal -->
         <div class="modal fade" id="makeGameModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -177,7 +177,7 @@
             <div class="modal-body">
               <form class="form-horizontal" id="make-game">
                 <div class="form-group">
-                  <label for="inputCats" class="col-sm-2 control-label">Number of Categories</label>
+                  <label for="inputCats" class="col-sm-4 control-label">Number of Categories</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" name="game[num_categories]"
                     placeholder="Max: 5">
@@ -193,7 +193,23 @@
           </div>
         </div>
       </div>
+<!-- All Games Modal -->
+      <div class="modal fade" id="allGamesModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">All Games!</h4>
+          </div>
+          <div class="modal-body">
+            <div class="all-games-body">
 
+            </div>
+            <button type="button" class="btn btn-success" id="close-all-games">Okay</button>
+          </div>
+        </div>
+      </div>
+      </div>
       <!-- TREBEK IMAGE -->
         <img src="imgs/jservice-trebek.png" style="position: fixed; bottom: 0;">
     </body>
