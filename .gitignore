@@ -1,6 +1,6 @@
 tmp
 dist
-vendor.js
+*vendor.js
 specs.js
 *bundle.js
 _SpecRunner.html
