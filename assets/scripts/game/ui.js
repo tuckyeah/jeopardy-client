@@ -43,8 +43,8 @@ const filter_categories = (data) => {
   data.forEach(function(element){
     if (ids.indexOf(element.category.id) === -1) {
       element.category.clues = [];
-      categories.unshift(element.category);
-      ids.unshift(element.category.id);
+      categories.push(element.category);
+      ids.push(element.category.id);
     }
   });
   return categories;
@@ -54,7 +54,7 @@ const build_categories = (data) => {
   data.forEach(function(element) {
     app.game.categories.forEach(function(category){
       if (category.id === element.category.id) {
-        category.clues.push(element);
+        category.clues.unshift(element);
       }
     });
   });
