@@ -43,8 +43,8 @@ const filter_categories = (data) => {
   data.forEach(function(element){
     if (ids.indexOf(element.category.id) === -1) {
       element.category.clues = [];
-      categories.push(element.category);
-      ids.push(element.category.id);
+      categories.unshift(element.category);
+      ids.unshift(element.category.id);
     }
   });
   return categories;
@@ -62,7 +62,7 @@ const build_categories = (data) => {
 
 const newGameSuccess = (data) => {
   app.game = data;
-  // console.log(app.game);
+  console.log(app.game);
   app.game.categories = filter_categories(app.game.game.clues);
   build_categories(app.game.game.clues);
   // console.log(app.game.categories);
