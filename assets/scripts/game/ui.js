@@ -50,22 +50,32 @@ const filter_categories = (data) => {
   return categories;
 };
 
+const sort_clues = () => {
+  app.game.categories.forEach(function(category) {
+    console.log(category);
+    category.clues = category.clues.sort(function(a, b) { return a.value - b.value; });
+    console.log(category.clues);
+  });
+};
+
+
 const build_categories = (data) => {
   data.forEach(function(element) {
     app.game.categories.forEach(function(category){
       if (category.id === element.category.id) {
-        category.clues.unshift(element);
+        category.clues.push(element);
       }
     });
   });
+  sort_clues();
 };
+
 
 const newGameSuccess = (data) => {
   app.game = data;
   // console.log(app.game);
   app.game.categories = filter_categories(app.game.game.clues);
   build_categories(app.game.game.clues);
-  console.log(app.game.categories);
   displayCategories();
   $('.score-header').html(showScoreTemplate(app.game.game.user));
   $('.content').attr('id', app.game.game.id); // add game id to content
