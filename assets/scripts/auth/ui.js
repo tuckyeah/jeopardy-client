@@ -21,9 +21,11 @@ const gameBoardView = function () {
   $('#sign-up-button').hide();
   $('.intro-text-box').hide();
   $('img').fadeOut('slow');
+  $('.category-box').show();
 };
 
 const logOutView = function() {
+  $('.category-box').html('');
   $('nav').css('visibility', 'hidden');
   $('.score-header').html('');
   $('.category-box').hide();
@@ -73,6 +75,7 @@ const changePasswordFailure = (error) => {
 
 const signOutSuccess = () => {
   app.user = null;
+  app.game = null;
   logOutView();
 };
 

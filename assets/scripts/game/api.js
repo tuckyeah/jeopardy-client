@@ -2,8 +2,6 @@
 
 const app = require('../app.js');
 
-
-
 const newGame = function(data) {
   return $.ajax({
     url: app.host + "/games",

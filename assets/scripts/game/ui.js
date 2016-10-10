@@ -54,7 +54,7 @@ const build_categories = (data) => {
   data.forEach(function(element) {
     app.game.categories.forEach(function(category){
       if (category.id === element.category.id) {
-        category.clues.push(element);
+        category.clues.unshift(element);
       }
     });
   });
