@@ -265,9 +265,11 @@ webpackJsonp([0],[
 	  $('#sign-up-button').hide();
 	  $('.intro-text-box').hide();
 	  $('img').fadeOut('slow');
+	  $('.category-box').show();
 	};
 
 	var logOutView = function logOutView() {
+	  $('.category-box').html('');
 	  $('nav').css('visibility', 'hidden');
 	  $('.score-header').html('');
 	  $('.category-box').hide();
@@ -309,6 +311,7 @@ webpackJsonp([0],[
 
 	var signOutSuccess = function signOutSuccess() {
 	  app.user = null;
+	  app.game = null;
 	  logOutView();
 	};
 
@@ -1769,7 +1772,7 @@ webpackJsonp([0],[
 	  data.forEach(function (element) {
 	    app.game.categories.forEach(function (category) {
 	      if (category.id === element.category.id) {
-	        category.clues.push(element);
+	        category.clues.unshift(element);
 	      }
 	    });
 	  });
