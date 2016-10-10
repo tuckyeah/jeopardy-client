@@ -65,7 +65,7 @@ const newGameSuccess = (data) => {
   // console.log(app.game);
   app.game.categories = filter_categories(app.game.game.clues);
   build_categories(app.game.game.clues);
-  // console.log(app.game.categories);
+  console.log(app.game.categories);
   displayCategories();
   $('.score-header').html(showScoreTemplate(app.game.game.user));
   $('.content').attr('id', app.game.game.id); // add game id to content
